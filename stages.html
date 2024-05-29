@@ -149,5 +149,31 @@
     </div>
 
     <script type="text/javascript" src="js/hamburger.js"></script>
+    <script>
+let lastKnownScrollPosition = 0;
+addEventListener("scroll", (event) => {
+  const laposte  = document.getElementsByClassName("laPoste")[0];
+  const phoenix  = document.getElementsByClassName("phoenix")[0];
+  const v = lastKnownScrollPosition - window.scrollY;
+  if(Math.abs(v) > 25) {
+	if(v > 0) {
+		window.scrollTo({
+		  top: laposte.getBoundingClientRect().y + window.scrollY,
+		  left: 0,
+		  behavior: "smooth",
+		});
+	} else {
+		window.scrollTo({
+		  top: phoenix.getBoundingClientRect().y + window.scrollY,
+		  left: 0,
+		  behavior: "smooth",
+		});
+	}
+	lastKnownScrollPosition = window.scrollY;
+  }
+  
+  
+});
+</script>
 </body>
 </html>
